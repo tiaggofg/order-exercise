@@ -3,9 +3,18 @@ package entities;
 public class OrderItem {
 	
 	private int quantity;
-	private double price;
+	private Product product;
 	
 	public OrderItem() {
+	}
+	
+	public OrderItem(int quantity, String name, double price) {
+		product = new Product(name, price);
+		this.quantity = quantity;
+	}
+	
+	public String getProductName() {
+		return product.getName();
 	}
 	
 	public int getQuantity() {
@@ -16,16 +25,8 @@ public class OrderItem {
 		this.quantity = quantity;
 	}
 	
-	public double getPrice() {
-		return price;
-	}
-	
-	public void setPrice(double price) {
-		this.price = price;
-	}
-	
 	public double subTotal() {
-		return quantity * price;	
+		return quantity * product.getPrice();	
 	}
 
 }

@@ -31,7 +31,7 @@ public class Order {
 	}
 	
 	public void addItem(int quantity, String name, double price) {
-		orderItem.add(new OrderItem(quantity, name, price));
+		orderItem.add(new OrderItem(quantity, new Product(name, price)));
 	}
 	
 	public void removeItem(String name) {

@@ -8,8 +8,8 @@ public class OrderItem {
 	public OrderItem() {
 	}
 	
-	public OrderItem(int quantity, String name, double price) {
-		product = new Product(name, price);
+	public OrderItem(int quantity, Product product) {
+		this.product = product;
 		this.quantity = quantity;
 	}
 	

@@ -17,6 +17,10 @@ public class OrderItem {
 		return product.getName();
 	}
 	
+	public double getProductPrice() {
+		return product.getPrice();
+	}
+	
 	public int getQuantity() {
 		return quantity;
 	}

@@ -57,21 +57,24 @@ public class Order {
 	
 	@Override
 	public String toString() {
-		String orderSumary =
-			"Order Moment: " + sdf.format(moment) +
-			"\nOrder Status: " + status +
-			"\nClient: " + client.getName() + " (" + client.getBithDate() + ") - " + client.getEmail() +
-			"\nOrder items:";
+		StringBuilder orderSumary = new StringBuilder();
+		
+		orderSumary.append("\nORDER SUMARY:\n");
+		orderSumary.append("Order Moment: " + sdf.format(moment) + "\n");
+		orderSumary.append("Order Status: " + status + "\n");
+		orderSumary.append("Client: " + client.getName() + " (" + client.getBithDate() + ") - " + client.getEmail() + "\n");
+		orderSumary.append("Order items:\n");
 		
 		for (OrderItem item : orderItem) {
-			orderSumary += "" +
-					"\n" + item.getProductName() +
+			orderSumary.append(
+					item.getProductName() +
 					", $" + item.getProductPrice() +
 					", Quantity: " + item.getQuantity() +
-					", Subtotal: $" + item.subTotal();
+					", Subtotal: $" + item.subTotal()
+			);
 		}
+		orderSumary.append("Total price: " + this.total(orderItem));
 		
-		orderSumary += "\nTotal price: " + this.total(orderItem);
-		return orderSumary;
+		return String.valueOf(orderSumary);
 	}
 }

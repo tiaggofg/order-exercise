@@ -35,8 +35,7 @@ public class Program {
 		
 		for (int i = 1; i <= itemsQuantity; i++) {
 			System.out.print("\nEnter #" + i + " item data:\nProduct name: ");
-			String name = sc.nextLine();
-			sc.nextLine();
+			String name = sc.next();
 			
 			System.out.print("Product price: ");
 			double price = sc.nextDouble();
@@ -47,8 +46,7 @@ public class Program {
 			order.addItem(quantity, name, price);
 		}
 		
-		System.out.println("\nORDER SUMARY:");
-		System.out.println(order.toString());
+		System.out.println(order);
 		
 		sc.close();
 	}

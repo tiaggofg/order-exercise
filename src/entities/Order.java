@@ -39,7 +39,7 @@ public class Order {
 	
 	public void removeItem(String name) {
 		for (OrderItem item : orderItem) {
-			if (item.getProductName() == name) {
+			if (item.getProduct().getName() == name) {
 				orderItem.remove(item);
 			} else {
 				continue;
@@ -67,8 +67,8 @@ public class Order {
 		
 		for (OrderItem item : orderItem) {
 			orderSumary.append(
-					item.getProductName() +
-					", $" + item.getProductPrice() +
+					item.getProduct().getName() +
+					", $" + item.getProduct().getPrice() +
 					", Quantity: " + item.getQuantity() +
 					", Subtotal: $" + item.subTotal()
 			);

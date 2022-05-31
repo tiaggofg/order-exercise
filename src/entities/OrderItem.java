@@ -13,12 +13,8 @@ public class OrderItem {
 		this.quantity = quantity;
 	}
 	
-	public String getProductName() {
-		return product.getName();
-	}
-	
-	public double getProductPrice() {
-		return product.getPrice();
+	public Product getProduct() {
+		return product;
 	}
 	
 	public int getQuantity() {

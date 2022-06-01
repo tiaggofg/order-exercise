@@ -3,10 +3,13 @@ package application;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.Locale;
 import java.util.Scanner;
 
 import entities.Client;
 import entities.Order;
+import entities.OrderItem;
+import entities.Product;
 import entities.enums.OrderStatus;
 
 public class Program {
@@ -15,6 +18,7 @@ public class Program {
 		
 		Scanner sc = new Scanner(System.in);
 		SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+		Locale.setDefault(Locale.US);
 		
 		System.out.print("Enter client data:\nName: ");
 		String clientName = sc.nextLine();
@@ -38,12 +42,12 @@ public class Program {
 			String name = sc.next();
 			
 			System.out.print("Product price: ");
-			double price = sc.nextDouble();
+			Double price = sc.nextDouble();
 			
 			System.out.print("Quantity: ");
-			int quantity = sc.nextInt();
+			Integer quantity = sc.nextInt();
 			
-			order.addItem(quantity, name, price);
+			order.addItem(new OrderItem(quantity, price, new Product(name, price)));
 		}
 		
 		System.out.println(order);

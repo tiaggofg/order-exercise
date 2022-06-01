@@ -33,8 +33,8 @@ public class Order {
 		return status;
 	}
 	
-	public void addItem(int quantity, String name, double price) {
-		orderItem.add(new OrderItem(quantity, new Product(name, price)));
+	public void addItem(OrderItem item) {
+		orderItem.add(item);
 	}
 	
 	public void removeItem(String name) {
@@ -47,8 +47,8 @@ public class Order {
 		}
 	}
 	
-	public double total(List<OrderItem> orderItem) {
-		double totalValue = 0;
+	public Double total(List<OrderItem> orderItem) {
+		Double totalValue = 0.00;
 		for (OrderItem item : orderItem) {
 			totalValue += item.subTotal();
 		}
@@ -66,14 +66,9 @@ public class Order {
 		orderSumary.append("Order items:\n");
 		
 		for (OrderItem item : orderItem) {
-			orderSumary.append(
-					item.getProduct().getName() +
-					", $" + item.getProduct().getPrice() +
-					", Quantity: " + item.getQuantity() +
-					", Subtotal: $" + item.subTotal()
-			);
+			orderSumary.append(item.toString());
 		}
-		orderSumary.append("Total price: " + this.total(orderItem));
+		orderSumary.append("Total price: " + String.format("%.2f", this.total(orderItem)));
 		
 		return String.valueOf(orderSumary);
 	}
